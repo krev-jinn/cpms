@@ -986,6 +986,12 @@ def get_firebase_status():
 def export_to_firestore_schema():
     return firebase_sync.get_firestore_collections_data()
 
+from . import db_viewer
+
+@app.get("/db", response_class=HTMLResponse)
+def view_database_inspector(table: Optional[str] = None):
+    return db_viewer.render_db_html(table)
+
 # Mount static files and frontend
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend")
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
