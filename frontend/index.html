@@ -8,12 +8,6 @@
   <link rel="stylesheet" href="/static/css/components.css">
 </head>
 <body>
-    <!-- ========================================================== -->
-  <!-- VIT VTOP-STYLE MULTI-ROLE LOGIN GATEWAY                   -->
-  <!-- ========================================================== -->
-    <!-- ========================================================== -->
-  <!-- DYNAMIC JUDICIAL HOMEPAGE & MULTI-ROLE LOGIN GATEWAY       -->
-  <!-- ========================================================== -->
   <div id="cpms-homepage" class="cpms-homepage-wrapper">
     <!-- Top Navigation Bar -->
     <header class="homepage-top-nav">
@@ -205,8 +199,7 @@
 
     <!-- Project Credit Footer -->
     <footer class="homepage-academic-footer">
-      <div>Court Proceedings Management System (CPMS) &bull; Software Engineering Lab (BCSE301P)</div>
-      <div style="margin-top:4px;">Candidate: <strong>Pranayaa C (24BYB0189)</strong> &bull; Team: Neethisha AB, Madhumitha R &bull; Faculty: <strong>Dr. Asha N</strong></div>
+      <div>Court Proceedings Management System (CPMS) &bull; </div>
     </footer>
   </div>
 
@@ -260,7 +253,6 @@
       </ul>
 
       <div class="sidebar-footer">
-        <div>BCSE301P Software Engineering Lab</div>
         <div style="color:var(--accent-gold); margin-top:2px; font-weight:600;">High Court CPMS Portal &bull; 2026</div>
       </div>
     </aside>
@@ -317,7 +309,7 @@
       <main class="page-body">
 
         <!-- ============================================== -->
-        <!-- VIEW 1: CASE MANAGEMENT (Assessment 8.2 Focus) -->
+        <!-- VIEW 1: CASE MANAGEMENT -->
         <!-- ============================================== -->
         <section id="cases-view" class="view-section active">
           <!-- Metrics Cards -->
@@ -580,13 +572,13 @@
 
 
         <!-- ============================================== -->
-        <!-- VIEW 6: ASSESSMENT 8.3 - AI CASE SUMMARY ASST  -->
+        <!-- VIEW 6: AI CASE SUMMARY ASSISTANT  -->
         <!-- ============================================== -->
         <section id="ai-assistant-view" class="view-section">
           <div class="ai-workbench">
             <div class="ai-header-bar">
               <div>
-                <span class="ai-badge">&#129302; ASSESSMENT 8.3: AI CASE SUMMARY ASSISTANT</span>
+                <span class="ai-badge">&#129302; AI CASE SUMMARY ASSISTANT</span>
                 <h2 style="font-size:18px; font-weight:700; color:var(--primary-navy); margin-top:6px;">Intelligent Legal Fact Extraction & Summarization</h2>
                 <p style="font-size:12.5px; color:#64748b; margin-top:2px;">
                   Analyzes unstructured dispute narratives, computes extractive graph centrality summaries (LexRank/TextRank), extracts legal entities, and provides judicial recommendations.
@@ -988,7 +980,7 @@
         "hearings-view": "Court Hearing Schedules & Cause List",
         "evidence-view": "Evidence Portal & Digital Document Repository",
         "reports-view": "System Analytics & Judicial Reports",
-        "ai-assistant-view": "AI Case Summary Assistant (Assessment 8.3)"
+        "ai-assistant-view": "AI Case Summary Assistant"
       };
       const headerTitle = document.getElementById("page-header-title");
       if (headerTitle) headerTitle.textContent = titles[viewId] || "Court Proceedings Management System";
