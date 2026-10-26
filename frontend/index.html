@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Court Proceedings Management System (CPMS)</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+</head>
+<body>
+    <!-- ========================================================== -->
+  <!-- VIT VTOP-STYLE MULTI-ROLE LOGIN GATEWAY                   -->
+  <!-- ========================================================== -->
+    <!-- ========================================================== -->
+  <!-- DYNAMIC JUDICIAL HOMEPAGE & MULTI-ROLE LOGIN GATEWAY       -->
+  <!-- ========================================================== -->
+  <div id="cpms-homepage" class="cpms-homepage-wrapper">
+    <!-- Top Navigation Bar -->
+    <header class="homepage-top-nav">
+      <div class="homepage-brand">
+        <div class="brand-crest-icon">&#9878;</div>
+        <div class="brand-titles">
+          <h1>COURT PROCEEDINGS MANAGEMENT SYSTEM</h1>
+          <span>High Court of Judicature &bull; Central Judicial Portal</span>
+        </div>
+      </div>
+      <div class="homepage-nav-right">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span class="theme-toggle-icon">&#127769;</span>
+          <span class="theme-toggle-label">Dark Mode</span>
+        </button>
+        <div style="font-size:12px; font-weight:600; color:#10b981; display:flex; align-items:center; gap:6px; background:rgba(16,185,129,0.1); padding:6px 12px; border-radius:20px; border:1px solid rgba(16,185,129,0.2);">
+          <span style="width:8px; height:8px; border-radius:50%; background:#10b981; display:inline-block;"></span>
+          Central Registry Online
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="homepage-hero">
+      <div class="hero-pill-badge">&#9878; OFFICIAL DIGITAL COURT PORTAL</div>
+      <h2>Court Proceedings Management System</h2>
+      <p>
+        Unified judicial platform providing end-to-end case workflows: electronic case filing, registry scrutiny verification, courtroom cause lists, tamper-proof digital evidence repository, and automated operative orders.
+      </p>
+      <p style="margin-top:12px; font-size:13px; font-weight:600; color:var(--text-main);">
+        Select your designated role below to access your secure workspace:
+      </p>
+    </section>
+
+    <!-- 5 Distinct Dynamic Role Cards Container -->
+    <div class="role-cards-grid">
+      <!-- 1. Administrator Card -->
+      <div class="role-portal-card role-admin" onclick="auth.loginAs('Admin')" title="One-Click Sign in as Administrator">
+        <div>
+          <div class="card-top-row">
+            <div class="role-avatar-box">&#128737;&#65039;</div>
+            <span class="role-tag-badge">Governance</span>
+          </div>
+          <div class="role-card-info">
+            <h3>Administrator</h3>
+            <div class="role-user-persona">Priya Sharma</div>
+            <div class="role-scope-desc">Bench allocation, judicial roster management, system auditing, and court performance analytics.</div>
+          </div>
+        </div>
+        <div>
+          <button class="role-enter-btn" onclick="event.stopPropagation(); auth.loginAs('Admin');">
+            Enter Portal &#10140;
+          </button>
+          <div class="role-card-bottom">
+            <span class="one-click-indicator">&#9679; 1-Click Access</span>
+            <span class="custom-creds-btn" onclick="event.stopPropagation(); auth.openCustomLogin('Admin');">Custom Login</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Presiding Judge Card -->
+      <div class="role-portal-card role-judge" onclick="auth.loginAs('Judge')" title="One-Click Sign in as Presiding Judge">
+        <div>
+          <div class="card-top-row">
+            <div class="role-avatar-box">&#9878;</div>
+            <span class="role-tag-badge">Bench</span>
+          </div>
+          <div class="role-card-info">
+            <h3>Presiding Judge</h3>
+            <div class="role-user-persona">Hon. Rajesh Kumar</div>
+            <div class="role-scope-desc">Preside over assigned commercial matters, conduct hearing proceedings, examine evidence, and issue final judgments.</div>
+          </div>
+        </div>
+        <div>
+          <button class="role-enter-btn" onclick="event.stopPropagation(); auth.loginAs('Judge');">
+            Enter Portal &#10140;
+          </button>
+          <div class="role-card-bottom">
+            <span class="one-click-indicator">&#9679; 1-Click Access</span>
+            <span class="custom-creds-btn" onclick="event.stopPropagation(); auth.openCustomLogin('Judge');">Custom Login</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Advocate & Counsel Card -->
+      <div class="role-portal-card role-lawyer" onclick="auth.loginAs('Lawyer')" title="One-Click Sign in as Advocate">
+        <div>
+          <div class="card-top-row">
+            <div class="role-avatar-box">&#128220;</div>
+            <span class="role-tag-badge">Bar Council</span>
+          </div>
+          <div class="role-card-info">
+            <h3>Advocate &amp; Counsel</h3>
+            <div class="role-user-persona">Adv. Arjun Mehta</div>
+            <div class="role-scope-desc">File new petitions with AI assistance, upload tamper-proof evidence, rectify registry defects, and track court dates.</div>
+          </div>
+        </div>
+        <div>
+          <button class="role-enter-btn" onclick="event.stopPropagation(); auth.loginAs('Lawyer');">
+            Enter Portal &#10140;
+          </button>
+          <div class="role-card-bottom">
+            <span class="one-click-indicator">&#9679; 1-Click Access</span>
+            <span class="custom-creds-btn" onclick="event.stopPropagation(); auth.openCustomLogin('Lawyer');">Custom Login</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Court Registry Staff Card -->
+      <div class="role-portal-card role-staff" onclick="auth.loginAs('Court Staff')" title="One-Click Sign in as Registry Staff">
+        <div>
+          <div class="card-top-row">
+            <div class="role-avatar-box">&#127963;</div>
+            <span class="role-tag-badge">Registry</span>
+          </div>
+          <div class="role-card-info">
+            <h3>Court Registry Staff</h3>
+            <div class="role-user-persona">Suresh Babu</div>
+            <div class="role-scope-desc">Inspect pleadings under CPC Order VII, admit compliant cases, return defective filings with scrutiny remarks, and update records.</div>
+          </div>
+        </div>
+        <div>
+          <button class="role-enter-btn" onclick="event.stopPropagation(); auth.loginAs('Court Staff');">
+            Enter Portal &#10140;
+          </button>
+          <div class="role-card-bottom">
+            <span class="one-click-indicator">&#9679; 1-Click Access</span>
+            <span class="custom-creds-btn" onclick="event.stopPropagation(); auth.openCustomLogin('Court Staff');">Custom Login</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Litigant & Citizen Card -->
+      <div class="role-portal-card role-client" onclick="auth.loginAs('Client')" title="One-Click Sign in as Litigant">
+        <div>
+          <div class="card-top-row">
+            <div class="role-avatar-box">&#128101;</div>
+            <span class="role-tag-badge">Litigant</span>
+          </div>
+          <div class="role-card-info">
+            <h3>Litigant &amp; Client</h3>
+            <div class="role-user-persona">Ramesh Gupta</div>
+            <div class="role-scope-desc">Track real-time case progression through the interactive state machine timeline, inspect cause list schedules, and download orders.</div>
+          </div>
+        </div>
+        <div>
+          <button class="role-enter-btn" onclick="event.stopPropagation(); auth.loginAs('Client');">
+            Enter Portal &#10140;
+          </button>
+          <div class="role-card-bottom">
+            <span class="one-click-indicator">&#9679; 1-Click Access</span>
+            <span class="custom-creds-btn" onclick="event.stopPropagation(); auth.openCustomLogin('Client');">Custom Login</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Judicial Capabilities Row -->
+    <div class="homepage-features-bar">
+      <div class="feature-pill-card">
+        <div class="feature-pill-icon">&#128274;</div>
+        <div class="feature-pill-text">
+          <h4>SHA-256 Evidence Vault</h4>
+          <p>Cryptographic hash verification guarantees document non-tampering.</p>
+        </div>
+      </div>
+      <div class="feature-pill-card">
+        <div class="feature-pill-icon">&#129302;</div>
+        <div class="feature-pill-text">
+          <h4>AI Legal Summary Assistant</h4>
+          <p>Extractive LexRank NLP &amp; legal statutory entity extraction.</p>
+        </div>
+      </div>
+      <div class="feature-pill-card">
+        <div class="feature-pill-icon">&#128337;</div>
+        <div class="feature-pill-text">
+          <h4>12-State Lifecycle Engine</h4>
+          <p>Strict workflow finite state machine adhering to court rules.</p>
+        </div>
+      </div>
+      <div class="feature-pill-card">
+        <div class="feature-pill-icon">&#128202;</div>
+        <div class="feature-pill-text">
+          <h4>Judicial Reporting &amp; Cause Lists</h4>
+          <p>Real-time court metrics, disposal rates, and exportable cause lists.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Credit Footer -->
+    <footer class="homepage-academic-footer">
+      <div>Court Proceedings Management System (CPMS) &bull; Software Engineering Lab (BCSE301P)</div>
+      <div style="margin-top:4px;">Candidate: <strong>Pranayaa C (24BYB0189)</strong> &bull; Team: Neethisha AB, Madhumitha R &bull; Faculty: <strong>Dr. Asha N</strong></div>
+    </footer>
+  </div>
+
+  <div class="app-container" id="app-container" style="display:none;">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-section">
+        <div class="brand-icon">&#9878;</div>
+        <div class="brand-text">
+          <h1>CPMS PORTAL</h1>
+          <span>High Court of Judicature</span>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <div class="nav-section-title">Core Modules</div>
+        <li class="nav-item">
+          <a class="nav-link active" onclick="switchView('cases-view')">
+            <span>&#128196;</span> Case Management
+            <span class="nav-badge" id="sidebar-case-badge">4</span>
+          </a>
+        </li>
+        <li class="nav-item" data-require-role="Lawyer,Admin">
+          <a class="nav-link" onclick="switchView('file-case-view')">
+            <span>&#9998;</span> File New Case
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchView('hearings-view')">
+            <span>&#128197;</span> Hearing Schedules
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchView('evidence-view')">
+            <span>&#128206;</span> Evidence Portal
+          </a>
+        </li>
+
+        <div class="nav-section-title">Judicial & Reports</div>
+        <li class="nav-item" data-require-role="Admin,Court Staff,Judge">
+          <a class="nav-link" onclick="switchView('reports-view')">
+            <span>&#128202;</span> System & Court Reports
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="switchView('ai-assistant-view')">
+            <span>&#129302;</span> AI Case Summary Assistant
+            <span class="nav-badge" style="background:#2563eb;">AI</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div>BCSE301P Software Engineering Lab</div>
+        <div style="color:var(--accent-gold); margin-top:2px; font-weight:600;">High Court CPMS Portal &bull; 2026</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+      <!-- Top App Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <div class="page-title" id="page-header-title">Case Management Dashboard</div>
+          <button class="btn-homepage-nav" onclick="auth.showHomepage()" title="Return to Homepage to switch roles">&#11148; Homepage</button></div>
+
+        <div class="header-right">
+          <!-- Notification Bell -->
+          <button class="notif-bell-btn" id="notif-bell-btn" title="View Notifications">
+            <span>&#128276;</span>
+            <div class="notif-count-badge" id="notif-unread-count" style="display:none;">0</div>
+          </button>
+
+          <!-- Notification Dropdown Menu -->
+          <div class="notif-dropdown" id="notif-dropdown">
+            <div class="notif-header">
+              <span>Court Notifications</span>
+              <span style="font-size:11px; color:#2563eb; cursor:pointer;" onclick="notifManager.loadNotifications()">Refresh</span>
+            </div>
+            <ul class="notif-list" id="notif-dropdown-list">
+              <li style="padding:15px; text-align:center; color:#94a3b8; font-size:12px;">Loading alerts...</li>
+            </ul>
+          </div>
+
+          <!-- Active User Profile Badge -->
+          <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" style="margin-right:4px;">
+            <span class="theme-toggle-icon">&#127769;</span>
+          </button>
+
+          <div class="user-profile-badge">
+            <div class="user-avatar" id="header-user-avatar">AM</div>
+            <div class="user-info-text">
+              <div class="user-name" id="header-user-name">Adv. Arjun Mehta</div>
+              <div class="user-role-label" id="header-user-role">Lawyer Portal</div>
+            </div>
+            <button class="btn-logout-header" onclick="auth.showHomepage()" title="Logout to Homepage">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Role Context Banner -->
+      <div style="background:#edf2f7; padding:8px 24px; font-size:12px; color:#475569; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+        <span id="role-context-banner">E-filing active: File new petitions, submit evidence documents, and track client hearing schedules.</span>
+        <span style="font-weight:600; color:#0d1b2a;">Database: Connected (SQLite / Local REST API)</span>
+      </div>
+
+      <!-- Main Page Body -->
+      <main class="page-body">
+
+        <!-- ============================================== -->
+        <!-- VIEW 1: CASE MANAGEMENT (Assessment 8.2 Focus) -->
+        <!-- ============================================== -->
+        <section id="cases-view" class="view-section active">
+          <!-- Metrics Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-info">
+                <h3>Total Cases</h3>
+                <p id="metric-total-cases">0</p>
+              </div>
+              <div class="metric-icon blue">&#128196;</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-info">
+                <h3>Active Matters</h3>
+                <p id="metric-active-cases">0</p>
+              </div>
+              <div class="metric-icon amber">&#9203;</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-info">
+                <h3>Registry Scrutiny</h3>
+                <p id="metric-scrutiny-cases">0</p>
+              </div>
+              <div class="metric-icon purple">&#128269;</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-info">
+                <h3>Disposed / Judged</h3>
+                <p id="metric-disposed-cases">0</p>
+              </div>
+              <div class="metric-icon green">&#9989;</div>
+            </div>
+          </div>
+
+          <!-- Filter & Search Bar -->
+          <div class="filter-bar">
+            <div class="search-input-wrapper">
+              <span class="search-icon">&#128269;</span>
+              <input type="text" id="case-search-input" class="form-control" placeholder="Search cases by title, parties, or ID...">
+            </div>
+            <div class="filter-actions">
+              <button class="filter-pill case-filter-pill active" data-filter="">All Cases</button>
+              <button class="filter-pill case-filter-pill" data-filter="Under Verification">Under Verification</button>
+              <button class="filter-pill case-filter-pill" data-filter="Case Registered">Case Registered</button>
+              <button class="filter-pill case-filter-pill" data-filter="Hearing Scheduled">Scheduled</button>
+              <button class="filter-pill case-filter-pill" data-filter="Judgement Issued">Judgement Issued</button>
+              <button class="btn btn-primary" data-require-role="Lawyer,Admin" onclick="switchView('file-case-view')">+ File New Case</button>
+            </div>
+          </div>
+
+          <!-- Cases Data Table -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">&#9878; Case Registry Repository</div>
+              <button class="btn btn-outline btn-sm" onclick="caseManager.loadCases()">Refresh Roster</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Case Title & Subject Matter</th>
+                    <th>Client (Petitioner)</th>
+                    <th>Advocate</th>
+                    <th>Presiding Judge</th>
+                    <th>Workflow Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="cases-table-body">
+                  <tr><td colspan="7" style="text-align:center; padding:30px;">Loading cases...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- VIEW 2: FILE NEW CASE (Lawyer E-Filing Form)   -->
+        <!-- ============================================== -->
+        <section id="file-case-view" class="view-section">
+          <div class="panel-card" style="max-width: 860px; margin: 0 auto;">
+            <div class="panel-header">
+              <div class="panel-title">&#9998; Electronic Case Registration & Filing Form</div>
+              <button class="btn btn-outline btn-sm" onclick="switchView('cases-view')">Back to Cases</button>
+            </div>
+            <div class="panel-body">
+              <form id="file-case-form">
+                <div class="form-group">
+                  <label class="form-label required">Select Client (Petitioner)</label>
+                  <select id="file-case-client-select" class="form-control" required>
+                    <option value="">Loading client list...</option>
+                  </select>
+                  <div class="form-text">Choose the authenticated client represented under power of attorney / vakalatnama.</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label required">Case Title / Cause Title</label>
+                  <input type="text" id="file-case-title" class="form-control" placeholder="e.g. Ramesh Gupta v. TechCorp Solutions Ltd - Suit for Specific Performance" required minlength="5">
+                  <div class="form-text">Formal title following court naming conventions (Plaintiff v. Defendant).</div>
+                </div>
+
+                <div class="form-group">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <label class="form-label required" style="margin-bottom:0;">Pleadings, Statement of Facts & Relief</label>
+                    <button type="button" class="btn btn-outline btn-sm" onclick="switchView('ai-assistant-view')">&#129302; Use AI Case Summary Assistant</button>
+                  </div>
+                  <textarea id="file-case-description" class="form-control" rows="6" placeholder="Enter complete statement of material facts, dates of cause of action, statutory provisions, and specific prayers/reliefs sought..." required minlength="20"></textarea>
+                  <div class="form-text">Minimum 20 characters required. Incomplete pleadings will be rejected during registry scrutiny.</div>
+                </div>
+
+                <div class="form-group" style="max-width: 250px;">
+                  <label class="form-label">Date of Filing</label>
+                  <input type="date" id="file-case-date" class="form-control">
+                  <div class="form-text">Defaults to today's date if left blank.</div>
+                </div>
+
+                <div style="margin-top:24px; display:flex; justify-content:flex-end; gap:12px;">
+                  <button type="button" class="btn btn-outline" onclick="switchView('cases-view')">Cancel</button>
+                  <button type="submit" class="btn btn-primary" id="file-case-submit-btn">Submit Case for Registry Verification</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- VIEW 3: HEARING SCHEDULES & CALENDAR           -->
+        <!-- ============================================== -->
+        <section id="hearings-view" class="view-section">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">&#128197; Cause List & Hearing Calendar</div>
+              <button class="btn btn-outline btn-sm" onclick="hearingScheduler.loadHearings()">Refresh Calendar</button>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Hearing ID</th>
+                    <th>Case Reference</th>
+                    <th>Date & Time</th>
+                    <th>Courtroom / Venue</th>
+                    <th>Presiding Bench</th>
+                    <th>Hearing Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="hearings-table-body">
+                  <tr><td colspan="7" style="text-align:center; padding:30px;">Loading hearing schedule...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- VIEW 4: EVIDENCE PORTAL & DOCUMENT REPOSITORY  -->
+        <!-- ============================================== -->
+        <section id="evidence-view" class="view-section">
+          <div class="panel-card" style="max-width: 860px; margin: 0 auto;">
+            <div class="panel-header">
+              <div class="panel-title">&#128206; Digital Evidence & Document Repository</div>
+              <button class="btn btn-primary btn-sm" onclick="evidencePortal.openUploadModal()">+ Upload New Evidence Document</button>
+            </div>
+            <div class="panel-body">
+              <div class="upload-dropzone" onclick="evidencePortal.openUploadModal()">
+                <div class="upload-icon">&#128229;</div>
+                <div style="font-weight:700; color:var(--primary-navy); font-size:15px;">Click to Upload Case Evidence Documents</div>
+                <p style="font-size:12px; color:#64748b; margin-top:4px;">Supports PDF contracts, bank statements, affidavits, photos, and expert witness reports (stored on server).</p>
+              </div>
+
+              <div style="margin-top:24px;">
+                <h4 style="font-size:14px; font-weight:700; color:var(--primary-navy); margin-bottom:12px;">Active Case Files & Attached Evidence</h4>
+                <p style="font-size:12.5px; color:#64748b; line-height:1.5;">
+                  Evidence is organized per case. To view, download, or inspect evidence documents for any matter, click <strong>View Details</strong> on that case in the Case Management module.
+                </p>
+                <div style="margin-top:16px;">
+                  <button class="btn btn-outline" onclick="switchView('cases-view')">Open Case Management Registry</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- VIEW 5: SYSTEM & COURT REPORTS (Admin/Judge)   -->
+        <!-- ============================================== -->
+        <section id="reports-view" class="view-section">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">&#128202; Judicial Metrics & System Audit Reports</div>
+              <button class="btn btn-accent btn-sm" id="export-report-csv-btn">&#128229; Export Report (CSV)</button>
+            </div>
+            <div class="panel-body">
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <div class="metric-info">
+                    <h3>Total Case Load</h3>
+                    <p id="report-total-cases">0</p>
+                  </div>
+                  <div class="metric-icon blue">&#128196;</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-info">
+                    <h3>Hearings Progress</h3>
+                    <p id="report-total-hearings">0</p>
+                  </div>
+                  <div class="metric-icon amber">&#128197;</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-info">
+                    <h3>Final Orders Issued</h3>
+                    <p id="report-total-judgements">0</p>
+                  </div>
+                  <div class="metric-icon green">&#9878;</div>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-info">
+                    <h3>Indexed Evidence</h3>
+                    <p id="report-total-evidence">0</p>
+                  </div>
+                  <div class="metric-icon purple">&#128206;</div>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px;">
+                <div class="detail-section">
+                  <div class="detail-section-title">Case Status Distribution</div>
+                  <div id="report-status-breakdown" style="padding:10px 0;">
+                    Loading status metrics...
+                  </div>
+                </div>
+
+                <div class="detail-section">
+                  <div class="detail-section-title">Judges Active Roster Workload</div>
+                  <div class="table-responsive">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Judge</th>
+                          <th>Assigned Cases</th>
+                          <th>Roster Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="report-judge-workload-tbody">
+                        <tr><td colspan="3">Loading judge workload...</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================== -->
+        <!-- VIEW 6: ASSESSMENT 8.3 - AI CASE SUMMARY ASST  -->
+        <!-- ============================================== -->
+        <section id="ai-assistant-view" class="view-section">
+          <div class="ai-workbench">
+            <div class="ai-header-bar">
+              <div>
+                <span class="ai-badge">&#129302; ASSESSMENT 8.3: AI CASE SUMMARY ASSISTANT</span>
+                <h2 style="font-size:18px; font-weight:700; color:var(--primary-navy); margin-top:6px;">Intelligent Legal Fact Extraction & Summarization</h2>
+                <p style="font-size:12.5px; color:#64748b; margin-top:2px;">
+                  Analyzes unstructured dispute narratives, computes extractive graph centrality summaries (LexRank/TextRank), extracts legal entities, and provides judicial recommendations.
+                </p>
+              </div>
+              <div style="text-align:right;">
+                <span style="font-size:11.5px; font-weight:600; color:#059669; background:#ecfdf5; padding:4px 10px; border-radius:20px; border:1px solid #a7f3d0;">
+                  Genuine AI Engine: Local NLP LexRank + Cloud Ready
+                </span>
+              </div>
+            </div>
+
+            <!-- Quick Sample Briefs -->
+            <div style="margin-top:14px;">
+              <span style="font-size:11.5px; font-weight:700; text-transform:uppercase; color:#64748b;">Load Realistic Test Brief:</span>
+              <div class="ai-sample-pills">
+                <button class="ai-sample-btn" onclick="aiAssistantUI.loadSample('commercial')">&#128188; Commercial Breach (INR 50L)</button>
+                <button class="ai-sample-btn" onclick="aiAssistantUI.loadSample('land')">&#127969; Land Compensation (Art 226)</button>
+                <button class="ai-sample-btn" onclick="aiAssistantUI.loadSample('cheque')">&#128179; Cheque Dishonour (Sec 138 NI Act)</button>
+                <button class="ai-sample-btn" onclick="aiAssistantUI.loadSample('arbitration')">&#9878; Arbitration Appointment (Sec 11)</button>
+              </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="form-group" style="margin-top:14px;">
+              <label class="form-label required">Case Description / Dispute Facts</label>
+              <textarea id="ai-input-text" class="form-control" rows="7" placeholder="Paste unstructured legal case facts, parties, dates, claims, and statutory provisions here..."></textarea>
+            </div>
+
+            <!-- Configuration Controls -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:14px; background:#f8fafc; padding:14px; border-radius:8px; border:1px solid #e2e8f0; margin-top:10px;">
+              <div>
+                <label class="form-label">Summary Length</label>
+                <select id="ai-sentence-count" class="form-control">
+                  <option value="2">2 Sentences (Concise Brief)</option>
+                  <option value="3" selected>3 Sentences (Standard Overview)</option>
+                  <option value="4">4 Sentences (Detailed Summary)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">Summarization Algorithm</label>
+                <select id="ai-algorithm" class="form-control">
+                  <option value="lexrank" selected>LexRank (Cosine Saliency Graph)</option>
+                  <option value="textrank">TextRank (PageRank Graph Centrality)</option>
+                  <option value="luhn">Luhn (High-Frequency Content Metric)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label">Cloud AI API Key (Optional)</label>
+                <input type="password" id="ai-api-key" class="form-control" placeholder="Optional Google Gemini API Key">
+              </div>
+            </div>
+
+            <div style="margin-top:16px; display:flex; justify-content:flex-end; gap:10px;">
+              <button class="btn btn-outline" onclick="document.getElementById('ai-input-text').value = ''">Clear</button>
+              <button class="btn btn-primary" id="ai-run-btn">&#129302; Generate AI Summary</button>
+            </div>
+
+            <!-- AI Output Results Container -->
+            <div id="ai-output-container" style="display:none; margin-top:20px;"></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+
+  <!-- ============================================== -->
+  <!-- MODALS (Dialogs for Complete State Workflow)   -->
+  <!-- ============================================== -->
+
+  <!-- Modal 1: Case Details & Complete Workflow History -->
+  <div class="modal-backdrop" id="case-detail-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="case-detail-modal-title">Case Details</h3>
+        <button class="modal-close-btn" onclick="closeModal('case-detail-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Interactive State Transition Diagram Tracker -->
+        <div style="margin-bottom:16px;">
+          <label style="font-size:11px; text-transform:uppercase; color:#64748b; font-weight:700;">Workflow State Transition Tracker (Page 10 UML)</label>
+          <div class="workflow-stepper" id="case-state-timeline"></div>
+        </div>
+
+        <!-- Case Detail Tabs -->
+        <div class="nav-tabs">
+          <button class="tab-btn active" onclick="switchDetailTab('tab-case-info')">Pleadings & Info</button>
+          <button class="tab-btn" onclick="switchDetailTab('tab-case-evidence')">Evidence Documents</button>
+          <button class="tab-btn" onclick="switchDetailTab('tab-case-hearings')">Hearings</button>
+          <button class="tab-btn" onclick="switchDetailTab('tab-case-judgment')">Judgment</button>
+          <button class="tab-btn" onclick="switchDetailTab('tab-case-audit')">Audit Trail</button>
+        </div>
+
+        <div id="tab-case-info" class="detail-tab-pane active">
+          <div id="case-detail-basic-info">Loading basic info...</div>
+        </div>
+
+        <div id="tab-case-evidence" class="detail-tab-pane" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <strong style="font-size:13px; color:var(--primary-navy);">Attached Digital Evidence</strong>
+            <button class="btn btn-outline btn-sm" onclick="evidencePortal.openUploadModal(caseManager.currentCaseDetail.case_id)">+ Upload File</button>
+          </div>
+          <div id="case-detail-evidence-list">Loading evidence...</div>
+        </div>
+
+        <div id="tab-case-hearings" class="detail-tab-pane" style="display:none;">
+          <div id="case-detail-hearings-list">Loading hearings...</div>
+        </div>
+
+        <div id="tab-case-judgment" class="detail-tab-pane" style="display:none;">
+          <div id="case-detail-judgement">Loading judgment status...</div>
+        </div>
+
+        <div id="tab-case-audit" class="detail-tab-pane" style="display:none;">
+          <ul class="audit-timeline" id="case-detail-audit-trail"></ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div id="case-detail-modal-actions" style="display:flex; gap:10px;"></div>
+        <button class="btn btn-outline" onclick="closeModal('case-detail-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal 2: Assign Judge (Admin) -->
+  <div class="modal-backdrop" id="assign-judge-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Admin: Assign Presiding Judge</h3>
+        <button class="modal-close-btn" onclick="closeModal('assign-judge-modal')">&times;</button>
+      </div>
+      <form id="assign-judge-form">
+        <div class="modal-body">
+          <input type="hidden" id="assign-judge-case-id">
+          <div class="form-group">
+            <label class="form-label required">Select Judge from Court Roster</label>
+            <select id="assign-judge-select" class="form-control" required>
+              <option value="">Loading judges...</option>
+            </select>
+            <div class="form-text">Based on subject matter expertise and bench availability.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('assign-judge-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Judge Assignment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 3: Schedule Hearing (Judge/Staff) -->
+  <div class="modal-backdrop" id="schedule-hearing-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Schedule Court Hearing</h3>
+        <button class="modal-close-btn" onclick="closeModal('schedule-hearing-modal')">&times;</button>
+      </div>
+      <form id="schedule-hearing-form">
+        <div class="modal-body">
+          <input type="hidden" id="schedule-case-id">
+          <div class="form-group">
+            <label class="form-label required">Hearing Date</label>
+            <input type="date" id="schedule-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Hearing Time</label>
+            <input type="time" id="schedule-time" class="form-control" required value="10:30">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Courtroom / Bench Allocation</label>
+            <select id="schedule-venue" class="form-control" required>
+              <option value="Courtroom 1 - Chief Justice Court">Courtroom 1 - Chief Justice Court</option>
+              <option value="Courtroom 2 - Civil Appeals Division">Courtroom 2 - Civil Appeals Division</option>
+              <option value="Courtroom 3 - Commercial Bench" selected>Courtroom 3 - Commercial Bench</option>
+              <option value="Courtroom 4 - Constitutional Division">Courtroom 4 - Constitutional Division</option>
+              <option value="Virtual Courtroom Hall A">Virtual Courtroom Hall A</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Purpose of Appearance / Remarks</label>
+            <input type="text" id="schedule-remarks" class="form-control" placeholder="e.g. Admission hearing, framing of issues, or arguments.">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('schedule-hearing-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Schedule Hearing & Notify Parties</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 4: Reschedule Hearing (Judge) -->
+  <div class="modal-backdrop" id="reschedule-hearing-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Reschedule Hearing (Adjournment)</h3>
+        <button class="modal-close-btn" onclick="closeModal('reschedule-hearing-modal')">&times;</button>
+      </div>
+      <form id="reschedule-hearing-form">
+        <div class="modal-body">
+          <input type="hidden" id="reschedule-hearing-id">
+          <div class="form-group">
+            <label class="form-label required">New Hearing Date</label>
+            <input type="date" id="reschedule-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">New Hearing Time</label>
+            <input type="time" id="reschedule-time" class="form-control" required value="11:00">
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Courtroom Venue</label>
+            <input type="text" id="reschedule-venue" class="form-control" value="Courtroom 3 - Commercial Bench" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Cause for Adjournment / Remarks</label>
+            <input type="text" id="reschedule-remarks" class="form-control" placeholder="e.g. Adjourned on joint request of counsels for document inspection." required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('reschedule-hearing-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Confirm Reschedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 5: Conduct Hearing (Judge) -->
+  <div class="modal-backdrop" id="conduct-hearing-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Record Hearing Proceedings</h3>
+        <button class="modal-close-btn" onclick="closeModal('conduct-hearing-modal')">&times;</button>
+      </div>
+      <form id="conduct-hearing-form">
+        <div class="modal-body">
+          <input type="hidden" id="conduct-hearing-id">
+          <input type="hidden" id="conduct-case-id">
+          <div class="form-group">
+            <label class="form-label required">Proceedings Notes & Oral Submissions</label>
+            <textarea id="conduct-notes" class="form-control" rows="4" placeholder="Record appearances of counsels, arguments heard, exhibits marked, and judicial observations..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Workflow Branch (Next Stage)</label>
+            <select id="conduct-next-step" class="form-control" required>
+              <option value="Next Hearing Required">Next Hearing Required (Adjourn for Further Hearing)</option>
+              <option value="Additional Documents Required">Additional Documents Required (Direct Parties to Upload Evidence)</option>
+              <option value="Proceed to Review" selected>Proceed to Review (Arguments Concluded - Under Review)</option>
+              <option value="Issue Final Order">Issue Final Order (Pronounce Judgment Now)</option>
+            </select>
+            <div class="form-text">Directly drives the State Transition Diagram state machine.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('conduct-hearing-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Proceedings & Advance State</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 6: Issue Final Judgment (Judge) -->
+  <div class="modal-backdrop" id="judgement-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">&#9878; Pronounce Final Judgment / Order</h3>
+        <button class="modal-close-btn" onclick="closeModal('judgement-modal')">&times;</button>
+      </div>
+      <form id="judgement-form">
+        <div class="modal-body">
+          <input type="hidden" id="judgement-case-id">
+          <div class="form-group">
+            <label class="form-label required">Operative Decision</label>
+            <select id="judgement-decision" class="form-control" required>
+              <option value="Allowed">Allowed (Relief Granted in Full)</option>
+              <option value="Partially Allowed">Partially Allowed (Relief Granted in Part)</option>
+              <option value="Dismissed">Dismissed (Suit Rejected on Merits)</option>
+              <option value="Settled">Disposed in terms of Compromise Settlement</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Judicial Reasoning & Operative Directions</label>
+            <textarea id="judgement-remarks" class="form-control" rows="5" placeholder="Enter findings on issues, legal grounds, citations, and specific operative directives..." required minlength="20"></textarea>
+            <div class="form-text">Will be recorded in the digital order register and triggers final judgment notification.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('judgement-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Pronounce Order & Issue Judgment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 7: Upload Evidence Document (Lawyer/Court) -->
+  <div class="modal-backdrop" id="upload-evidence-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">&#128206; Upload Case Evidence Document</h3>
+        <button class="modal-close-btn" onclick="closeModal('upload-evidence-modal')">&times;</button>
+      </div>
+      <form id="upload-evidence-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label required">Associate with Case</label>
+            <select id="evidence-case-select" class="form-control" required>
+              <option value="">Select case...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Document Classification</label>
+            <select id="evidence-doc-type" class="form-control" required>
+              <option value="Pleading Document">Pleading Document / Plaint</option>
+              <option value="Master Contract / Agreement">Master Contract / Agreement</option>
+              <option value="Bank Remittance Proof">Bank Remittance Proof</option>
+              <option value="Affidavit in Evidence">Affidavit in Evidence</option>
+              <option value="Statutory Notice & Acknowledgement">Statutory Notice & Acknowledgement</option>
+              <option value="Expert Technical Report">Expert Technical Report</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label required">Select File (PDF, Images, Word, Text)</label>
+            <input type="file" id="evidence-file-input" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Exhibit Description / Notes</label>
+            <input type="text" id="evidence-desc" class="form-control" placeholder="e.g. Exhibit P-1: Original Executed Contract dated 15 Jan 2024">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('upload-evidence-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="upload-evidence-submit-btn">Upload & Index Evidence</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal 8: Resubmit Rejected Case (Lawyer) -->
+  <div class="modal-backdrop" id="resubmit-case-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Resubmit Case After Registry Correction</h3>
+        <button class="modal-close-btn" onclick="closeModal('resubmit-case-modal')">&times;</button>
+      </div>
+      <form id="resubmit-case-form">
+        <div class="modal-body">
+          <input type="hidden" id="resubmit-case-id">
+          <div class="form-group">
+            <label class="form-label required">Corrected Pleadings & Compliance Explanation</label>
+            <textarea id="resubmit-corrections" class="form-control" rows="5" placeholder="Address all defects pointed out in the Registry scrutiny remarks..." required minlength="15"></textarea>
+            <div class="form-text">The case status will transition from 'Case Rejected' back to 'Under Verification'.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('resubmit-case-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Resubmit for Scrutiny</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Real-time Toast Notifications Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/case_management.js"></script>
+  <script src="/static/js/hearing_scheduler.js"></script>
+  <script src="/static/js/evidence_portal.js"></script>
+  <script src="/static/js/notifications_reports.js"></script>
+  <script src="/static/js/ai_assistant_ui.js"></script>
+
+  <script>
+    // Global Navigation & UI helpers
+    function switchView(viewId) {
+      document.querySelectorAll(".view-section").forEach(sec => sec.classList.remove("active"));
+      const target = document.getElementById(viewId);
+      if (target) target.classList.add("active");
+
+      document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+      const activeLink = document.querySelector(`.nav-link[onclick*="${viewId}"]`);
+      if (activeLink) activeLink.classList.add("active");
+
+      const titles = {
+        "cases-view": "Case Management Dashboard",
+        "file-case-view": "E-Filing & Case Registration",
+        "hearings-view": "Court Hearing Schedules & Cause List",
+        "evidence-view": "Evidence Portal & Digital Document Repository",
+        "reports-view": "System Analytics & Judicial Reports",
+        "ai-assistant-view": "AI Case Summary Assistant (Assessment 8.3)"
+      };
+      const headerTitle = document.getElementById("page-header-title");
+      if (headerTitle) headerTitle.textContent = titles[viewId] || "Court Proceedings Management System";
+
+      // Trigger data loads
+      if (viewId === "reports-view") notifManager.loadReports();
+      if (viewId === "hearings-view") hearingScheduler.loadHearings();
+      if (viewId === "cases-view") caseManager.loadCases();
+    }
+
+    function switchDetailTab(tabId) {
+      document.querySelectorAll(".detail-tab-pane").forEach(pane => pane.style.display = "none");
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      
+      const pane = document.getElementById(tabId);
+      if (pane) pane.style.display = "block";
+      
+      const activeBtn = document.querySelector(`.tab-btn[onclick*="${tabId}"]`);
+      if (activeBtn) activeBtn.classList.add("active");
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.add("active");
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.remove("active");
+    }
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+      const toast = document.createElement("div");
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `<div style="font-weight:600; margin-bottom:2px;">${type.toUpperCase()}</div><div>${escapeHtml(message)}</div>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // App Initialization
+    window.addEventListener("DOMContentLoaded", async () => {
+      await auth.init();
+      await caseManager.init();
+      await hearingScheduler.init();
+      await evidencePortal.init();
+      await notifManager.init();
+      aiAssistantUI.init();
+    });
+  </script>
+
+  <!-- Custom Credentials Login Modal -->
+  <div id="custom-login-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width:440px;">
+      <div class="modal-header">
+        <div class="modal-title">Court Authentication Portal</div>
+        <button class="modal-close-btn" onclick="closeModal('custom-login-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px; color:#64748b; margin-bottom:16px;">
+          Enter official credentials or select from the court user registry to test role-based authentication.
+        </p>
+        <form id="custom-login-form" onsubmit="auth.submitCustomLogin(event)">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="custom-login-email" class="form-control" required placeholder="e.g. lawyer.mehta@bar.org">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" id="custom-login-password" class="form-control" required placeholder="Enter password">
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+            <button type="button" class="btn btn-outline" onclick="closeModal('custom-login-modal')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Authenticate &amp; Enter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
