@@ -338,14 +338,18 @@ class CaseManager {
         modalFooterActions.innerHTML = `
           <button class="btn btn-accent" onclick="caseManager.openAssignJudgeModal(${c.case_id})">Assign Judge</button>
         `;
-      } else if (role === "Judge" && (c.status === "Judge Assigned" || c.status === "Hearing Conducted")) {
+      } else if (role === "Judge" && c.status === "Judge Assigned") {
         modalFooterActions.innerHTML = `
-          <button class="btn btn-primary" onclick="hearingScheduler.openScheduleModal(${c.case_id})">Schedule Hearing</button>
-          ${c.status === "Hearing Conducted" ? `<button class="btn btn-accent" onclick="caseManager.openJudgementModal(${c.case_id})">Deliver Judgment</button>` : ''}
+          <button class="btn btn-primary" onclick="hearingScheduler.openScheduleModal(${c.case_id})">📅 Schedule Hearing</button>
         `;
-      } else if (role === "Judge" && c.status === "Case Under Review") {
+      } else if (role === "Judge" && (c.status === "Hearing Scheduled" || c.status === "Hearing Rescheduled")) {
         modalFooterActions.innerHTML = `
-          <button class="btn btn-accent" onclick="caseManager.openJudgementModal(${c.case_id})">Deliver Final Judgment</button>
+          <button class="btn btn-accent" onclick="caseManager.openJudgementModal(${c.case_id})">⚖️ Conclude Hearing & Deliver Judgment</button>
+          <button class="btn btn-outline" onclick="hearingScheduler.openScheduleModal(${c.case_id})">📅 Reschedule Hearing</button>
+        `;
+      } else if (role === "Judge" && (c.status === "Hearing Conducted" || c.status === "Case Under Review")) {
+        modalFooterActions.innerHTML = `
+          <button class="btn btn-accent" onclick="caseManager.openJudgementModal(${c.case_id})">⚖️ Deliver Final Judgment</button>
         `;
       } else if (role === "Lawyer" && c.status === "Case Rejected") {
         modalFooterActions.innerHTML = `

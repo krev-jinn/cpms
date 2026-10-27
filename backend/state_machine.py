@@ -41,11 +41,13 @@ TRANSITIONS = {
     },
     "Hearing Scheduled": {
         "Reschedule": ("Hearing Rescheduled", ["Judge", "Admin"]),
-        "Conduct Hearing": ("Hearing Conducted", ["Judge"])
+        "Conduct Hearing": ("Hearing Conducted", ["Judge"]),
+        "Issue Final Order": ("Judgement Issued", ["Judge"])
     },
     "Hearing Rescheduled": {
         "Reschedule": ("Hearing Rescheduled", ["Judge", "Admin"]),
-        "Conduct Hearing": ("Hearing Conducted", ["Judge"])
+        "Conduct Hearing": ("Hearing Conducted", ["Judge"]),
+        "Issue Final Order": ("Judgement Issued", ["Judge"])
     },
     "Hearing Conducted": {
         "Next Hearing Required": ("Hearing Scheduled", ["Judge"]),
