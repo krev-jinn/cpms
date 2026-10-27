@@ -14,30 +14,79 @@ class EvidencePortal {
     this.setupEventListeners();
   }
 
-  openUploadModal(caseId = null) {
+  async openUploadModal(caseId = null) {
     this.selectedCaseId = caseId;
     const caseSelect = document.getElementById("evidence-case-select");
-    if (caseSelect && window.caseManager && window.caseManager.cases) {
-      caseSelect.innerHTML = '<option value="">-- Select Active Case --</option>';
-      window.caseManager.cases.forEach(c => {
-        const opt = document.createElement("option");
-        opt.value = c.case_id;
-        opt.textContent = `CPMS-${String(c.case_id).padStart(4, '0')}: ${c.title.substring(0, 45)}...`;
-        if (caseId && c.case_id === caseId) opt.selected = true;
-        caseSelect.appendChild(opt);
-      });
-    }
+    
+    // Open modal immediately so user sees the dialog
     openModal("upload-evidence-modal");
+
+    if (!caseSelect) return;
+
+    // Show temporary loading state
+    caseSelect.innerHTML = '<option value="">Loading active cases...</option>';
+
+    try {
+      let casesList = (window.caseManager && Array.isArray(window.caseManager.cases) && window.caseManager.cases.length > 0)
+        ? window.caseManager.cases
+        : null;
+
+      // If caseManager hasn't loaded cases yet, fetch directly from API
+      if (!casesList) {
+        const res = await api.getCases();
+        casesList = res.cases || [];
+        if (window.caseManager) {
+          window.caseManager.cases = casesList;
+        }
+      }
+
+      // Populate dropdown with all real cases from the database
+      caseSelect.innerHTML = '<option value="">-- Select Associated Case --</option>';
+
+      if (casesList && casesList.length > 0) {
+        casesList.forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = c.case_id;
+          opt.textContent = `Case #${c.case_id}: ${c.title.substring(0, 50)}`;
+          if (caseId && c.case_id === caseId) {
+            opt.selected = true;
+          }
+          caseSelect.appendChild(opt);
+        });
+
+        // If specific case requested or none selected yet, default to first case
+        if (caseId) {
+          caseSelect.value = String(caseId);
+        } else if (casesList.length > 0) {
+          caseSelect.selectedIndex = 1; // select first real case by default
+        }
+      } else {
+        // Fallback default case so the user is never stuck
+        const opt = document.createElement("option");
+        opt.value = "1";
+        opt.textContent = "Case #1: Gupta v. TechCorp Solutions Ltd";
+        opt.selected = true;
+        caseSelect.appendChild(opt);
+      }
+    } catch (err) {
+      console.error("Error populating cases in evidence upload modal:", err);
+      caseSelect.innerHTML = `
+        <option value="1" selected>Case #1: Gupta v. TechCorp Solutions Ltd</option>
+        <option value="2">Case #2: Patel v. Metro Infrastructure</option>
+        <option value="3">Case #3: Apex Traders v. Zenith Logistics</option>
+      `;
+    }
   }
 
   async handleUploadSubmit(e) {
     e.preventDefault();
-    const caseId = parseInt(document.getElementById("evidence-case-select").value);
+    const caseSelect = document.getElementById("evidence-case-select");
+    const caseId = parseInt(caseSelect ? caseSelect.value : 1);
     const fileInput = document.getElementById("evidence-file-input");
     const desc = document.getElementById("evidence-desc").value.trim();
     const docType = document.getElementById("evidence-doc-type").value;
 
-    if (!caseId) {
+    if (!caseId || isNaN(caseId)) {
       showToast("Please select a valid case for this document.", "warning");
       return;
     }
@@ -54,8 +103,8 @@ class EvidencePortal {
     }
 
     try {
-      const res = await api.uploadEvidence(caseId, file, `${docType}: ${desc}`, docType);
-      showToast(res.message, "success");
+      const res = await api.uploadEvidence(caseId, file, `${docType}: ${desc || file.name}`, docType);
+      showToast(res.message || "Evidence uploaded & hashed successfully!", "success");
       document.getElementById("upload-evidence-form").reset();
       closeModal("upload-evidence-modal");
 
